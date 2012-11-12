@@ -1,0 +1,3 @@
+[Templates]
+Default="$PATH/$PREFIX_$CHANNEL_$UDIM.tif"
+
