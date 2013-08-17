@@ -1,0 +1,40 @@
+#!/bin/sh
+
+#install chrome
+echo installing chrome
+sudo apt-get install chromium-browser
+
+#sublime text
+echo installing sublime text 2
+cd /tmp
+wget http://c758482.r82.cf2.rackcdn.com/Sublime%20Text%202.0.2%20x64.tar.bz2
+tar -xvf Sublime\ Text\ 2.0.2\ x64.tar.bz2
+sudo mkdir -p /usr/local/soft
+sudo cp -r /tmp/Sublime\ Text\ 2 /usr/local/soft/sublimetext2
+sudo ln -s /usr/local/soft/sublimetext2/sublime_text /usr/local/bin/text
+
+#install git
+echo installing git  ...
+sudo apt-get install git
+
+#install gimp
+echo installing gimp ...
+sudo add-apt-repository ppa:otto-kesselgulasch/gimp
+sudo apt-get update
+sudo apt-get install gimp
+
+#install krita
+echo installing krita ...
+sudo add-apt-repository ppa:kubuntu-ppa/backports
+sudo apt-get update
+sudo apt-get install krita
+
+#install eclipse
+echo installing eclipse
+sudo apt-get install eclipse
+
+#thunar
+sudo apt-get install thunar
+
+#PySide
+sudo apt-get install python-pyside

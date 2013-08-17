@@ -1,0 +1,40 @@
+#!/bin/sh
+
+#base lib
+sudo apt-get install g++
+sudo apt-get install erlang-base erlang-dev erlang-eunit erlang-nox
+sudo apt-get install libmozjs185-dev libicu-dev libcurl4-gnutls-dev libtool curl
+
+#couchdb
+echo installing couchdb ...
+cd /tmp
+wget http://www.eng.lsu.edu/mirrors/apache/couchdb/source/1.3.0/apache-couchdb-1.3.0.tar.gz
+gunzip -c apache-couchdb-1.3.0.tar.gz | tar -xvf -
+cd /tmp/apache-couchdb-1.3.0
+./configure && make && sudo make install
+sudo adduser --disabled-login --disabled-password --no-create-home couchdb
+sudo chown -R couchdb:couchdb /usr/local/var/log/couchdb
+sudo chown -R couchdb:couchdb /usr/local/var/lib/couchdb
+sudo chown -R couchdb:couchdb /usr/local/var/run/couchdb
+sudo chown -R couchdb:couchdb /usr/local/etc/couchdb
+sudo chown -R couchdb:couchdb /usr/local/var/log/couchdb
+sudo chmod -R 0770 /usr/local/etc/couchdb
+sudo chmod -R 0770 /usr/local/var/lib/couchdb
+sudo chmod -R 0770 /usr/local/var/log/couchdb
+sudo chmod -R 0770 /usr/local/var/run/couchdb
+sudo ln -s /usr/local/etc/init.d/couchdb  /etc/init.d
+sudo update-rc.d couchdb defaults
+
+# sudo chown -R couchdb:couchdb /usr/local/etc/couchdb
+# sudo chown -R couchdb /usr/local/var/lib/couchdb
+# sudo chown -R couchdb /usr/local/var/run/couchdb
+# sudo chown -R couchdb:couchdb /usr/local/var/log/couchdb
+# sudo chmod -R 0770 /usr/local/etc/couchdb
+# sudo chmod -R 0770 /usr/local/var/lib/couchdb
+# sudo chmod -R 0770 /usr/local/var/log/couchdb
+# sudo chmod -R 0770 /usr/local/var/run/couchdb
+# sudo chown -R couchdb: /usr/local/var/lib/couchdb /usr/local/var/log/couchdb
+# sudo /usr/local/etc/rc.d/couchdb start
+# sudo ln -s /usr/local/etc/rc.d/couchdb /etc/init.d/couchdb
+# sudo chkconfig --add couchdb
+# sudo chkconfig --level 12345 couchdb on
