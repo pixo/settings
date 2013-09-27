@@ -1,0 +1,6 @@
+#!/bin/sh
+
+sudo apt-get install xmonad
+mkdir $HOME/.xmonad
+cp -v xmonad.hs $HOME/.xmonad
+xmonad --recompile
